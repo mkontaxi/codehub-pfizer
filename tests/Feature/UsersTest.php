@@ -54,7 +54,7 @@ class UsersTest extends TestCase {
 
         $response = $this->json('POST', '/api/users', $data);
 
-        $response->assertStatus(201)->assertJson(['user' => []]);
+        $response->assertStatus(200)->assertJson(['user' => []]);
 
         $this->assertDatabaseHas('users', Arr::except($data, ['password']));
     }

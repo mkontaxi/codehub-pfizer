@@ -42,7 +42,7 @@ class DepartmentsTest extends TestCase
         $data = ['title' => $title, 'manager_id' => $user->id];
         $response = $this->json('POST', '/api/departments', $data);
 
-        $response->assertStatus(201)->assertJson(['department' => []]);
+        $response->assertStatus(200)->assertJson(['department' => []]);
 
         $this->assertDatabaseHas('departments', $data);
     }

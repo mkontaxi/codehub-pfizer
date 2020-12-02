@@ -4,8 +4,6 @@ use App\Http\Controllers\API\DepartmentsController;
 use App\Http\Controllers\API\DepartmentsManagersController;
 use App\Http\Controllers\API\DepartmentsUsersController;
 use App\Http\Controllers\API\UsersVacationsController;
-use App\Http\Middleware\Logger;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\API\UsersController;
 use \App\Http\Controllers\API\SkillsController;
@@ -22,11 +20,8 @@ use \App\Http\Controllers\API\UsersSkillsController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
 Route::apiResource('users', UsersController::class);
-Route::apiResource('skills', SkillsController::class)->middleware(Logger::class);
+Route::apiResource('skills', SkillsController::class);
 Route::apiResource('users.skills', UsersSkillsController::class, ['only' => ['index', 'store']]);
 Route::apiResource('users.vacations', UsersVacationsController::class);
 Route::apiResource('departments', DepartmentsController::class);

@@ -40,7 +40,7 @@ class UsersSkillsTest extends TestCase {
 
         $response = $this->json('POST', "/api/users/{$user->id}/skills", compact('skills'));
 
-        $response->assertStatus(201)->assertJson(['skills' => []]);
+        $response->assertStatus(200)->assertJson(['skills' => []]);
 
         $skills->each(function ($skill) use ($user) {
             $this->assertDatabaseHas('users_skills', [

@@ -53,7 +53,7 @@ class UsersVacationsTest extends TestCase {
 
         $response = $this->json('POST', "/api/users/{$user->id}/vacations", $data);
 
-        $response->assertStatus(201);
+        $response->assertStatus(200);
 
         $this->assertDatabaseHas('vacations', array_merge($data, ['user_id' => $user->id]));
     }

@@ -44,7 +44,7 @@ class DepartmentsController extends Controller
     public function store(StoreRequest $request) {
         $department = Department::create($request->only('title', 'manager_id'));
 
-        return response()->json(['department' => new DepartmentResource($department)], 201);
+        return response()->json(['department' => new DepartmentResource($department)], 200);
     }
 
     /**
